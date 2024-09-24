@@ -1,0 +1,28 @@
+def grafo():
+    return {
+        'hipodromo':{'cadiz': 1000, 'francia': 700},
+        'francia':{'hipodromo':700, 'claret': 550, 'federico_lleras': 300, 'san_cayetano': 600},
+        'claret':{'francia': 550, 'san_cayetano': 800, 'america': 200, 'departamental': 700},
+        'america':{'claret': 200},
+        'cadiz':{'hipodromo':1000, 'federico_lleras': 440, 'nacional': 520, 'magisterio': 200,'monte_alegre':260},
+        'federico_lleras':{'francia': 300, 'cadiz': 440, 'san_cayetano': 210, 'nacional': 180},
+        'san_cayetano':{'departamental':190,'santander':130,'boyaca':230,'claret': 800, 'francia': 600, 'federico_lleras': 210, 'nacional':310},
+        'departamental':{'laureles':80,'san_cayetano':190,'claret': 700},
+        'laureles':{'santander':110,'departamental':80,'naciones_unidas':50},
+        'naciones_unidas':{'laureles':50},
+        'santander':{'boyaca':90,'laureles':110,'san_cayetano':130},
+        'nacional':{'boyaca': 130,'cadiz':520, 'federico_lleras': 180, 'san_cayetano': 310,'monte_alegre':270, 'las_palmas':70},
+        'magisterio':{'cadiz': 200, 'monte_alegre': 130},
+        'monte_alegre':{'las_palmas':50,'macarena_alta':40,'cadiz':260, 'magisterio': 130,'nacional':270},
+        'las_palmas':{'monte_alegre':50,'macarena_alta':50,'macarena':40,'boyaca':90,'nacional': 70},
+        'boyaca':{'castellana':110,'macarena_baja':60,'macarena':80,'las_palmas':90,'santander':90,'san_cayetano':230,'nacional': 130},
+        'macarena_alta':{'las_palmas':50,'monte_alegre':40,'macarena':50},
+        'macarena':{'macarena_alta':50,'las_palmas':40,'metaima_alta':43,'metaima_baja':60,'boyaca':80},
+        'macarena_baja':{'metaima_baja':50,'boyaca': 60, 'castellana':40},
+        'castellana':{'santa_helena':45,'boyaca':110,'macarena_baja':40},
+        'santa_helena':{'metaima_baja':42,'casa_club':45,'castellana':45},
+        'metaima_alta':{'macarena':40,'metaima_baja':32},
+        'metaima_baja':{'metaima_alta':32,'macarena':60,'macarena_baja':50,'santa_helena':42},
+        'casa_club':{'santa_helena':45,'bosques_santa_helena':26},
+        'bosques_santa_helena':{'casa_club':26}
+    }
