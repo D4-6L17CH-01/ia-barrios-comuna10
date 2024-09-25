@@ -14,8 +14,8 @@ from busqueda_iterativa import iterativa
 class GraphTraversalApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Exploración de Redes")
-        self.root.configure(bg='black')  # Fondo negro para la ventana
+        self.root.title("Busqueda en nodos")
+        self.root.configure(bg='black')
         self.root.state('zoomed')
 
         self.graph = self.create_graph()

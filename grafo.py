@@ -21,7 +21,7 @@ def grafo():
         'macarena_baja':{'metaima_baja':50,'boyaca': 60, 'castellana':40},
         'castellana':{'santa_helena':45,'boyaca':110,'macarena_baja':40},
         'santa_helena':{'metaima_baja':42,'casa_club':45,'castellana':45},
-        'metaima_alta':{'macarena':40,'metaima_baja':32},
+        'metaima_alta':{'macarena':43,'metaima_baja':32},
         'metaima_baja':{'metaima_alta':32,'macarena':60,'macarena_baja':50,'santa_helena':42},
         'casa_club':{'santa_helena':45,'bosques_santa_helena':26},
         'bosques_santa_helena':{'casa_club':26}
