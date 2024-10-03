@@ -6,16 +6,16 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from tkinter import messagebox
 
 from grafo import grafo
-from busqueda_amplitud import amplitud
-from busqueda_profundida import profundida
-from busqueda_coste import coste
-from busqueda_iterativa import iterativa
+from _amplitud_search import amplitud
+from _profundidad_search import profundida
+from _coste_search import coste
+from _iterativa_search import iterativa
 
 class GraphTraversalApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Busqueda en nodos")
-        self.root.configure(bg='black')
+        self.root.configure(bg='palegreen')
         self.root.state('zoomed')
 
         self.graph = self.create_graph()
@@ -24,9 +24,10 @@ class GraphTraversalApp:
 
         # Configuración del estilo para botones y etiquetas (texto en negro y fondo negro)
         style = ttk.Style()
-        style.configure("TButton", foreground='black', background='black', font=('Arial', 10), padding=6)
-        style.configure("TLabel", foreground='black', background='black', font=('Arial', 12))
-        style.configure("TFrame", background='black')  # Fondo del frame en negro
+        style.configure("TButton", background='palegreen2', foreground='black', font=('SegoeUI', 12), padding=6)
+        style.configure("TLabel", foreground='black', background='limegreen', font=('SegoeUI', 16,))
+        style.configure("TFrame", background='palegreen2')  # Fondo del frame en negro
+        style.configure("TCombo", font=('SegoeUI', 14))
 
         self.create_widgets()
         self.draw_graph()
@@ -42,7 +43,6 @@ class GraphTraversalApp:
     def create_widgets(self):
         nodos = list(grafo().keys())
 
-        # Crear un frame con fondo negro
         frame = ttk.Frame(self.root, style="TFrame")
         frame.pack(pady=20)
 
@@ -57,17 +57,15 @@ class GraphTraversalApp:
         self.end_combobox.grid(row=1, column=1, padx=10, pady=10)
         self.end_combobox.set('')
 
+        # Frame para los botones de limpiar y salir, también en negro
+        ttk.Button(frame, text="Restablecer", command=self.clear_entries).grid(row=1, column=2, padx=10, pady=10)
+        ttk.Button(frame, text="Salir", command=self.root.quit).grid(row=1, column=3, padx=10, pady=10)
+
         # Botones con estilo (fondo negro y texto negro)
         ttk.Button(frame, text="BFS (Amplitud)", command=lambda: self.show_result("BFS")).grid(row=2, column=0, padx=10, pady=10)
         ttk.Button(frame, text="DFS (Profundidad)", command=lambda: self.show_result("DFS")).grid(row=2, column=1, padx=10, pady=10)
-        ttk.Button(frame, text="UCS (Coste Uniforme)", command=lambda: self.show_result("UCS")).grid(row=3, column=0, padx=10, pady=10)
-        ttk.Button(frame, text="IDDFS (Prof. Iterativa)", command=lambda: self.show_result("IDDFS")).grid(row=3, column=1, padx=10, pady=10)
-
-        # Frame para los botones de limpiar y salir, también en negro
-        button_frame = ttk.Frame(self.root, style="TFrame")
-        button_frame.pack(pady=10)
-        ttk.Button(button_frame, text="Restablecer", command=self.clear_entries).pack(side=tk.LEFT, padx=10)
-        ttk.Button(button_frame, text="Salir", command=self.root.quit).pack(side=tk.LEFT, padx=10)
+        ttk.Button(frame, text="UCS (Coste Uniforme)", command=lambda: self.show_result("UCS")).grid(row=2, column=2, padx=10, pady=10)
+        ttk.Button(frame, text="IDDFS (Prof. Iterativa)", command=lambda: self.show_result("IDDFS")).grid(row=2, column=3, padx=10, pady=10)
 
     def draw_graph(self, path_edges=None, path_nodes=None):
         if self.canvas:
